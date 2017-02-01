@@ -1,0 +1,50 @@
+title: Game Of War
+email: tom@tsears.net
+description: Site the demonstrates a computer playing war with itself.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: tcsears
+github_username:  tsears
+
+host: 0.0.0.0
+port: 4000
+
+# Build settings
+markdown: kramdown
+
+gems:
+  - jekyll-assets
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - gulpfile.babel.js
+  - karma.conf.js
+  - license
+  - package.json
+  - vm/
+  - node_modules/
+  - gulp-tasks/
+  - coverage/
+  - lib/
+  #- js/lib  # something is mangling my js libraries.. i'll do it manually
+
+# sass settings
+sass:
+  sass_dir: _sass
+  style: :compressed
+
+assets:
+  compress:
+    js: false
+  sources:
+    - _assets/css
+    - _assets/js
+    - _assets/ng-templates
+  assets:
+    - "*.js.map"
+    - "*.html"
+
+
+host: 0.0.0.0
+port: 4000
