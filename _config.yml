@@ -27,6 +27,7 @@ exclude:
   - gulp-tasks/
   - coverage/
   - lib/
+  - _js/
   #- js/lib  # something is mangling my js libraries.. i'll do it manually
 
 # sass settings

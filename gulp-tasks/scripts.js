@@ -52,7 +52,7 @@ export default class ScriptTasks {
   scriptCompile() {
     const self = this;
     return () => {
-    	return self.gulp.src('_js/**/*.js')
+    	return self.gulp.src('_js/*.js')
         .pipe(self.plugins.named())
     		.pipe(self.plugins.webpackStream({
     				module: {
