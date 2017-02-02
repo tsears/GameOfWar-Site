@@ -13,6 +13,7 @@ export default class ScriptTasks {
         'gulp-tasks/*.js',
         'test/**/*.js',
   			'!**/*.min.js',
+        '!**/nglib.js'
   		])
   		.pipe(self.plugins.eslint())
   		.pipe(self.plugins.eslint.format());
@@ -24,20 +25,14 @@ export default class ScriptTasks {
     return () => {
     	return self.gulp.src([
   			'node_modules/angular/angular.min.js',
+        'node_modules/chart.js/dist/Chart.min.js',
+        'node_modules/angular-chart.js/dist/angular-chart.js'
   		])
   		.pipe(self.plugins.concat('nglib.js'))
   		.pipe(self.plugins.uglify({
         preserveComments: 'license'
       }))
-  		.pipe(self.gulp.dest('js/lib'));
-    };
-  }
-
-  angularPartials() {
-    const self = this;
-    return () => {
-      return self.gulp.src(['Frontend/**/*.html'])
-		  .pipe(self.gulp.dest('wwwroot/ng-partials'));
+  		.pipe(self.gulp.dest('_assets/js/js/lib'));
     };
   }
 
@@ -46,7 +41,7 @@ export default class ScriptTasks {
     return () => {
       return self.gulp.src(['lib/**/*.js'])
         .pipe(self.gulp.dest('_assets/js/js/lib'));
-    }
+    };
   }
 
   scriptCompile() {
@@ -72,7 +67,7 @@ export default class ScriptTasks {
     					})
     				]
     		}))
-        .pipe(self.gulp.dest('_assets/js/js'))
+        .pipe(self.gulp.dest('_assets/js/js'));
     };
   }
 

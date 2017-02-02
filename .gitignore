@@ -26,6 +26,7 @@ bld/
 [Cc]overage/
 .asset-cache/
 _site/
+_assets/js/
 
 # Visual Studio 2015 cache/options directory
 .vs/

@@ -1,0 +1,61 @@
+@import 'colors';
+
+#endless-war-simulation {
+  display: flex;
+  margin: 0 1em;
+  background-color: rgba(255,255,255,0.7);
+  padding: 1em;
+  border: 1px solid #cecece;
+  box-shadow: 4px 4px 5px 0px rgba(166,166,166,1);
+
+  h2 {
+    margin: 0;
+    margin-bottom: 0.5em;
+  }
+
+  >div:first-child {
+    max-width:25%;
+    margin-left: 1em;
+    p {
+      margin: 1em 0;
+    }
+  }
+
+  >div:last-child {
+    flex-grow: 1;
+    margin-right: 0;
+  }
+
+  .progress-bar {
+    background-color: #cecece;
+    height: 1em;
+    border-radius: 10px;
+    margin: 0.5em 0;
+
+    >p {
+      margin-top: 0.2em !important;
+      font-size: 0.7em;
+    }
+
+    >.progress-percent {
+      position: relative;
+      top: -1.2em;
+      margin: 0;
+      height: 1em;
+      color: white;
+      background-color: transparent;
+      width: 100%;
+      text-align: center;
+      font-size: 0.7em;
+    }
+
+    >.progress {
+      margin: 0;
+      height: 1em;
+      background-color: $progressBlue;
+      border-radius: 10px;
+      transition: width 0.1s;
+    }
+
+  }
+}

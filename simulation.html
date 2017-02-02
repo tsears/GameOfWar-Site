@@ -1,0 +1,45 @@
+---
+layout: main
+---
+
+{% js js/lib/game-of-war.min.js %}
+{% js js/lib/nglib.js %}
+{% js js/simulation.min.js %}
+
+{% css simulation %}
+
+<h1>Simulation Demo</h1>
+
+{% raw %}
+<div ng-app='SimulationApp' ng-controller='SimulationController as vm'>
+ <div id="simulation-container">
+   <div id="endless-war-simulation">
+     <div>
+       <h2>Endless War - {{vm.maxRounds | number}} Rounds</h2>
+       <p>
+         The game never ends! At the end of the round, all cards are placed in a
+         global discard pile. When a player runs out of cards, the discard pile is
+         added to the deck, shuffled, and the cards are distributed evenly between
+         all players in the game.
+       </p>
+       <p class="center">
+         <button class="green" ng-click="vm.runSimulation()" ng-disabled="vm.simRunning">Go!</button>
+         <button class="red" ng-click="vm.stopSimulation()" ng-disabled="!vm.simRunning">Stop</button>
+       </p>
+       <p class="center">
+         <input type="range" min="100" max="10000" step="100" value="1000" ng-model="vm.maxRounds" ng-disabled="vm.simRunning"/>
+       </p>
+       <div>
+         <div class="progress-bar">
+           <div class="progress" ng-style="{width: vm.progress + '%'}"></div>
+           <div class="progress-percent">{{vm.progress | number: 0}}%</div>
+           <p class="center">{{vm.roundsPlayed | number}} / {{vm.maxRounds | number}}</p>
+         </div>
+       </div>
+     </div>
+     <div>
+       <canvas class="chart chart-bar" chart-data="vm.data" chart-labels="vm.labels" chart-options="vm.chartOptions"></canvas>
+     </div>
+   </div>
+</div>
+{% endraw %}

@@ -23,6 +23,7 @@ module.exports = function(config) {
 
 		// list of files / patterns to load in the browser
 		files: [
+			'_assets/js/js/lib/nglib.js',
 			'test/tests.webpack.js',
 		],
 

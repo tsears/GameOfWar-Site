@@ -3,7 +3,6 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import ScriptTasks from './gulp-tasks/scripts';
 import CssTasks from './gulp-tasks/css';
 import DevTasks from './gulp-tasks/dev';
-import AssetTasks from './gulp-tasks/assets';
 import Named from 'vinyl-named';
 
 let plugins = gulpLoadPlugins({
@@ -22,8 +21,7 @@ let scriptTasks = new ScriptTasks(gulp, plugins);
 gulp.task('lint', scriptTasks.lint());
 gulp.task('angularLib', scriptTasks.angularLib());
 gulp.task('scriptCompile', scriptTasks.scriptCompile());
-gulp.task('angularPartials', scriptTasks.angularPartials());
-gulp.task('jsLib', ['angularPartials', 'angularLib', 'scriptCompile'], scriptTasks.jsLib());
+gulp.task('jsLib', ['angularLib', 'scriptCompile'], scriptTasks.jsLib());
 gulp.task('jsTest', scriptTasks.jsTest());
 
 // Dev Tasks
@@ -36,7 +34,6 @@ gulp.task('default',
     'angularLib',
     'scriptCompile',
     'jsTest',
-    'angularPartials',
 		'jsLib',
     'watch',
   ]

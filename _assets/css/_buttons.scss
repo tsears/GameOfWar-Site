@@ -1,0 +1,37 @@
+button {
+  padding: .5em 1em;
+  border: 0;
+  border-radius: 5px;
+  min-width: 6em;
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: default;
+  }
+
+  &.red, &.green, &.blue {
+    color: white;
+  }
+
+  @mixin button-styles($color) {
+    background-color: $color;
+    &:hover {
+      background-color: darken($color, 20%);
+    }
+    &[disabled] {
+      background-color: lighten($color, 20%);
+    }
+  }
+
+  &.red {
+    @include button-styles($redButton);
+  }
+
+  &.green {
+    @include button-styles($greenButton);
+  }
+
+  &.blue {
+    @include button-styles($blueButton);
+  }
+}

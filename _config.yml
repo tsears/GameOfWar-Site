@@ -28,6 +28,7 @@ exclude:
   - coverage/
   - lib/
   - _js/
+  - test/
   #- js/lib  # something is mangling my js libraries.. i'll do it manually
 
 # sass settings

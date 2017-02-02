@@ -5,6 +5,7 @@
 @import 'notifications';
 @import 'tables';
 @import 'panel';
+@import 'buttons';
 
 html, body {
   height: 100%;
@@ -54,6 +55,7 @@ div, p, table {
 #content {
   margin: 0;
   padding: 0;
+  flex-grow: 1;
 }
 
 header, footer {
