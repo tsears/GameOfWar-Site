@@ -1,8 +1,8 @@
 @import 'colors';
 
-#endless-war-simulation {
+.war-simulation {
   display: flex;
-  margin: 0 1em;
+  margin: 1em;
   background-color: rgba(255,255,255,0.7);
   padding: 1em;
   border: 1px solid #cecece;
@@ -54,8 +54,12 @@
       height: 1em;
       background-color: $progressBlue;
       border-radius: 10px;
-      transition: width 0.1s;
+      //transition: width 0.1s;
     }
 
+    >div:last-child {
+      margin: 0;
+      font-size: 0.7em;
+    }
   }
 }

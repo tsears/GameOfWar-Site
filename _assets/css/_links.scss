@@ -1,9 +1,8 @@
 a {
-    color: #ddd;
+    color: $progressBlue;
     text-decoration: none;
 
     &:hover {
       cursor: pointer;
-      text-decoration: underline;
     }
 }

@@ -1,4 +1,4 @@
-export default class SimulationController {
+export default class EndlessSimulationController {
   constructor($interval) {
     this._interval = $interval;
     this.data = [0,0,0,0];

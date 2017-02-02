@@ -11,9 +11,69 @@ layout: main
 <h1>Simulation Demo</h1>
 
 {% raw %}
-<div ng-app='SimulationApp' ng-controller='SimulationController as vm'>
+<div ng-app='SimulationApp'>
  <div id="simulation-container">
-   <div id="endless-war-simulation">
+   <!--
+
+   STANDARD War
+
+  -->
+
+  <div class="war-simulation" ng-controller='StandardSimulationController as vm'>
+    <div>
+      <h2>War - {{vm.maxGames | number}} Games</h2>
+      <p>
+        <ol>
+          <li>Game ends when a player has amassed all cards.</li>
+          <li>
+            When two (or more) players go to war, each player draws 2 cards, the
+            latter of which is used to resolve (or continue) the war. If a player
+            runs out of cards during a war (by drawing their last card as the first
+            card of the war), they lose, as the winner is determined by the maximum
+            card rank of the longest draw of the round.
+          </li>
+          <li>
+            At the end of a round, the winner collects the cards and places them
+            on the bottom of his/her discard pile in the order they were revealed
+            by each player, starting with the first.  This rule can be adjusted so
+            that the cards are shuffled before being awarded to the winner.
+          </li>
+        </ol>
+      </p>
+      <div class="center">
+        <button class="green" ng-click="vm.runSimulation()" ng-disabled="vm.simRunning">Go!</button>
+        <button class="red" ng-click="vm.stopSimulation()" ng-disabled="!vm.simRunning">Stop</button>
+      </div>
+      <div class="center">
+        <input type="range" min="100" max="10000" step="100" ng-model="vm.maxGames" ng-disabled="vm.simRunning"/>
+      </div>
+      <div>
+        <div class="progress-bar">
+          <div class="progress" ng-style="{width: vm.progress + '%'}"></div>
+          <div class="progress-percent">{{vm.progress | number: 0}}%</div>
+          <div class="center">{{vm.gamesPlayed | number}} / {{vm.maxGames | number}} ({{vm.gamesTerminated}} Terminated)</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <h2>Wins Per Player</h2>
+        <canvas class="chart chart-bar" chart-data="vm.data" chart-labels="vm.labels" chart-options="vm.chartOptions"></canvas>
+      </div>
+      <div>
+        <h2>Game Length</h2>
+        <canvas class="chart chart-line" chart-data="vm.roundData" chart-labels="vm.roundDataLabels" chart-options="vm.roundCountChartOptions"></canvas>
+      </div>
+    </div>
+  </div>
+
+   <!--
+
+   ENDLESS WAR
+
+   -->
+
+   <div class="war-simulation" ng-controller='EndlessSimulationController as vm'>
      <div>
        <h2>Endless War - {{vm.maxRounds | number}} Rounds</h2>
        <p>
@@ -22,18 +82,18 @@ layout: main
          added to the deck, shuffled, and the cards are distributed evenly between
          all players in the game.
        </p>
-       <p class="center">
+       <div class="center">
          <button class="green" ng-click="vm.runSimulation()" ng-disabled="vm.simRunning">Go!</button>
          <button class="red" ng-click="vm.stopSimulation()" ng-disabled="!vm.simRunning">Stop</button>
-       </p>
-       <p class="center">
+       </div>
+       <div class="center">
          <input type="range" min="100" max="10000" step="100" value="1000" ng-model="vm.maxRounds" ng-disabled="vm.simRunning"/>
-       </p>
+       </div>
        <div>
          <div class="progress-bar">
            <div class="progress" ng-style="{width: vm.progress + '%'}"></div>
            <div class="progress-percent">{{vm.progress | number: 0}}%</div>
-           <p class="center">{{vm.roundsPlayed | number}} / {{vm.maxRounds | number}}</p>
+           <div class="center">{{vm.roundsPlayed | number}} / {{vm.maxRounds | number}}</div>
          </div>
        </div>
      </div>

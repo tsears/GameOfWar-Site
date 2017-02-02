@@ -1,5 +1,7 @@
-import SimulationController from './Simulation/SimulationController';
+import EndlessSimulationController from './Simulation/EndlessSimulationController';
+import StandardSimulationController from './Simulation/StandardSimulationController';
 
 var app = angular.module('SimulationApp', ['chart.js']);
 
-app.controller('SimulationController', ['$interval', SimulationController]);
+app.controller('EndlessSimulationController', ['$interval', EndlessSimulationController]);
+app.controller('StandardSimulationController', ['$interval', StandardSimulationController]);

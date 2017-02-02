@@ -15,8 +15,9 @@ button {
 
   @mixin button-styles($color) {
     background-color: $color;
+    transition: background-color 0.1s;
     &:hover {
-      background-color: darken($color, 20%);
+      background-color: darken($color, 10%);
     }
     &[disabled] {
       background-color: lighten($color, 20%);

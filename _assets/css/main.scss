@@ -33,6 +33,7 @@ header > nav {
 
     li {
       line-height: 2em;
+      transition: background-color 0.2s;
 
       &:hover {
         background-color: #000;
@@ -43,6 +44,7 @@ header > nav {
         display: block;
         height: 100%;
         width: 100%;
+        color: #ddd;
       }
     }
   }
@@ -50,6 +52,10 @@ header > nav {
 
 div, p, table {
   margin: 2rem;
+}
+
+p {
+  text-indent: 2em;
 }
 
 #content {
@@ -83,4 +89,14 @@ strong {
 
 .center {
   text-align: center;
+}
+
+ol {
+   list-style-type: decimal;
+   list-style-position: outside;
+   margin-left: 1em;
+
+   >li {
+     margin-bottom: 0.5em;
+   }
 }
