@@ -41,11 +41,15 @@ layout: main
         </ol>
       </p>
       <div class="center">
-        <button class="green" ng-click="vm.runSimulation()" ng-disabled="vm.simRunning">Go!</button>
-        <button class="red" ng-click="vm.stopSimulation()" ng-disabled="!vm.simRunning">Stop</button>
+        <input type="range" min="100" max="10000" step="100" ng-model="vm.maxGames" ng-disabled="vm.simRunning"/><br/>
+        Number of games to play: {{vm.MaxGames}}
       </div>
       <div class="center">
-        <input type="range" min="100" max="10000" step="100" ng-model="vm.maxGames" ng-disabled="vm.simRunning"/>
+        <label><input type="checkbox" ng-model="vm.shuffleWonCards"/> Shuffle Cards before giving them to the winner</label>
+      </div>
+      <div class="center">
+        <button class="green" ng-click="vm.runSimulation()" ng-disabled="vm.simRunning">Go!</button>
+        <button class="red" ng-click="vm.stopSimulation()" ng-disabled="!vm.simRunning">Stop</button>
       </div>
       <div>
         <div class="progress-bar">

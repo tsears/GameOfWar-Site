@@ -26,6 +26,30 @@ export default class StandardSimulationController {
         {x: 4500, y: 0},
         {x: 4750, y: 0},
         {x: 5000, y: 0}
+      ],
+      [
+        {x: 0,    y: 0},
+        {x: 250,  y: 0},
+        {x: 500,  y: 0},
+        {x: 750,  y: 0},
+        {x: 1000, y: 0},
+
+        {x: 1250, y: 0},
+        {x: 1500, y: 0},
+        {x: 1750, y: 0},
+        {x: 2000, y: 0},
+        {x: 2250, y: 0},
+        {x: 2500, y: 0},
+        {x: 2750, y: 0},
+        {x: 3000, y: 0},
+        {x: 3250, y: 0},
+        {x: 3500, y: 0},
+        {x: 3750, y: 0},
+        {x: 4000, y: 0},
+        {x: 4250, y: 0},
+        {x: 4500, y: 0},
+        {x: 4750, y: 0},
+        {x: 5000, y: 0}
       ]
     ];
 
@@ -72,6 +96,7 @@ export default class StandardSimulationController {
     this.progress = 0;
     this.simRunning = false;
     this.gamesTerminated = 0;
+    this.shuffleWonCards = true;
 
     this.chartOptions = {
       tooltips: {
@@ -147,10 +172,12 @@ export default class StandardSimulationController {
     this.simRunning = true;
     this.gamesTerminated = 0;
 
+    const cardAwardMethod = this.shuffleWonCards ? War.CardAwardMethod.Shuffled : War.CardAwardMethod.Increasing;
+    const roundDataIndex = this.shuffleWonCards ? 1 : 0;
 
     this.interval = this._interval(() => {
       const deck = new War.Deck(4,13);
-      const warGame = new War.Game(deck, 4);
+      const warGame = new War.Game(deck, 4, cardAwardMethod);
 
       let result;
       let roundCount = 0;
@@ -163,8 +190,8 @@ export default class StandardSimulationController {
 
       if(roundCount !== 5000) {
         for(let i = 1; i < this.roundData[0].length; ++i) {
-          let e = this.roundData[0][i];
-          let p = this.roundData[0][i - 1]
+          let e = this.roundData[roundDataIndex][i];
+          let p = this.roundData[roundDataIndex][i - 1]
 
           console.log(roundCount);
           if (roundCount < e.x) {
