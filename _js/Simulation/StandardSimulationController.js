@@ -137,7 +137,7 @@ export default class StandardSimulationController {
           },
           scaleLabel: {
             display: true,
-            labelString: 'Number of Rounds (Buckets of 250)',
+            labelString: 'Number of Rounds Per Game (Buckets of 250)',
             fontSize: 16
           }
         }],
@@ -152,7 +152,7 @@ export default class StandardSimulationController {
           },
           scaleLabel: {
             display: true,
-            labelString: "Occurences",
+            labelString: "Number of Occurrences",
             fontSize: 16
           }
         }]

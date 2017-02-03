@@ -24,6 +24,10 @@ layout: main
       <h2>War - {{vm.maxGames | number}} Games</h2>
       <p>
         <ol>
+          <li>
+            Each player is dealt an even amount of cards.  Excess cards are not
+            used and remain on the deck.
+          </li>
           <li>Game ends when a player has amassed all cards.</li>
           <li>
             When two (or more) players go to war, each player draws 2 cards, the
@@ -34,18 +38,18 @@ layout: main
           </li>
           <li>
             At the end of a round, the winner collects the cards and places them
-            on the bottom of his/her discard pile in the order they were revealed
-            by each player, starting with the first.  This rule can be adjusted so
-            that the cards are shuffled before being awarded to the winner.
+            on the bottom of his/her stack. Cards can either be placed in
+            the order they were revealed by each player starting with the first,
+            or shuffled before being awarded to the winner.
           </li>
         </ol>
       </p>
       <div class="center">
         <input type="range" min="100" max="10000" step="100" ng-model="vm.maxGames" ng-disabled="vm.simRunning"/><br/>
-        Number of games to play: {{vm.MaxGames}}
+        Number of games to play: {{vm.maxGames}}
       </div>
       <div class="center">
-        <label><input type="checkbox" ng-model="vm.shuffleWonCards"/> Shuffle Cards before giving them to the winner</label>
+        <label><input type="checkbox" ng-model="vm.shuffleWonCards"/> Shuffle Cards before giving them to the winner<span ng-if="!vm.shuffleWonCards" class="super">*</span></label>
       </div>
       <div class="center">
         <button class="green" ng-click="vm.runSimulation()" ng-disabled="vm.simRunning">Go!</button>
@@ -57,6 +61,9 @@ layout: main
           <div class="progress-percent">{{vm.progress | number: 0}}%</div>
           <div class="center">{{vm.gamesPlayed | number}} / {{vm.maxGames | number}} ({{vm.gamesTerminated}} Terminated)</div>
         </div>
+      </div>
+      <div class="footnotes">
+        <div ng-if="!vm.shuffleWonCards"><span class="super">*</span> This has a drastic effect on game length. Games that go longer than 5000 rounds will be terminated</div>
       </div>
     </div>
     <div>
@@ -102,7 +109,10 @@ layout: main
        </div>
      </div>
      <div>
-       <canvas class="chart chart-bar" chart-data="vm.data" chart-labels="vm.labels" chart-options="vm.chartOptions"></canvas>
+       <div>
+         <h2>Wins Per Player</h2>
+         <canvas class="chart chart-bar" chart-data="vm.data" chart-labels="vm.labels" chart-options="vm.chartOptions"></canvas>
+       </div>
      </div>
    </div>
 </div>
