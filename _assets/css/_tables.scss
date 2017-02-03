@@ -1,9 +1,11 @@
 table {
-    td {
-        padding: 0.5em;
-    }
+  width: 100%;
 
-    tr:nth-child(odd) {
-        background-color: rgba(0,0,0,0.8);
-    }
+  td {
+      padding: 0.5em;
+  }
+
+  tr:nth-child(odd) {
+      background-color: rgba(0,0,0,0.2);
+  }
 }

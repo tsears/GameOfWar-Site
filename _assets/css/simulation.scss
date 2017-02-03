@@ -16,6 +16,15 @@
   >div:first-child {
     max-width:25%;
     margin-left: 1em;
+    > table {
+      margin: 2em 0;
+      th {
+        width: 12em;
+      }
+    }
+    > div {
+      margin: 1em 0;
+    }
     p {
       margin: 1em 0;
     }

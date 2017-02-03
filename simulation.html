@@ -20,7 +20,7 @@ layout: main
   -->
 
   <div class="war-simulation" ng-controller='StandardSimulationController as vm'>
-    <div>
+    <div class="controls">
       <h2>War - {{vm.maxGames | number}} Games</h2>
       <p>
         <ol>
@@ -63,8 +63,30 @@ layout: main
         </div>
       </div>
       <div class="footnotes">
-        <div ng-if="!vm.shuffleWonCards"><span class="super">*</span> This has a drastic effect on game length. Games that go longer than 5000 rounds will be terminated</div>
+        <div ng-if="!vm.shuffleWonCards"><span class="super">*</span> This has a drastic effect on game length. Games that go longer than {{vm.MAX_ROUNDS_IN_GAME}} rounds will be terminated</div>
       </div>
+      <table>
+        <tr>
+          <th>Rounds Played</th>
+          <td>{{vm.totalRoundCount | number}}</td>
+        </tr>
+        <tr>
+          <th>Wars</th>
+          <td>{{vm.warCount | number}}</td>
+        </tr>
+        <tr>
+          <th>Min Round Count</th>
+          <td>{{vm.minRoundCount === 5000 ? 'N/A' : vm.minRoundCount}}</td>
+        </tr>
+        <tr>
+          <th>Max Round Count</th>
+          <td>{{vm.maxRoundCount === 0 ? 'N/A' : vm.maxRoundCount}}</td>
+        </tr>
+        <tr>
+          <th>Average Round Count</th>
+          <td>{{vm.avgRoundCount | number: 1}}</td>
+        </tr>
+      </table>
     </div>
     <div>
       <div>

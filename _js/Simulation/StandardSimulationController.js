@@ -1,7 +1,13 @@
 export default class StandardSimulationController {
   constructor($interval) {
+    this.MAX_ROUNDS_IN_GAME = 5000;
     this._interval = $interval;
     this.data = [0,0,0,0];
+    this.warCount = 0;
+    this.minRoundCount = this.MAX_ROUNDS_IN_GAME;
+    this.maxRoundCount = 0;
+    this.totalRoundCount = 0;
+    this.avgRoundCount = 0;
     this.roundData = [
       [
         {x: 0,    y: 0},
@@ -166,6 +172,10 @@ export default class StandardSimulationController {
     this.simRunning = false;
   }
 
+  // this.warCount = 0;
+  // this.minRoundCount = 0;
+  // this.avgRoundCount = 0;
+
   runSimulation() {
     this.gamesPlayed = 0
     this.data = [0,0,0,0];
@@ -183,17 +193,21 @@ export default class StandardSimulationController {
       let roundCount = 0;
       do {
         result = warGame.playRound();
-        if (++roundCount === 5000) { ++this.gamesTerminated; break; }
+        ++this.totalRoundCount;
+        if (result.war) { ++this.warCount; }
+        if (++roundCount === this.MAX_ROUNDS_IN_GAME) { ++this.gamesTerminated; break; }
       } while (!result.gameOver);
 
       ++this.gamesPlayed;
+      this.avgRoundCount = this.totalRoundCount / this.gamesPlayed;
 
-      if(roundCount !== 5000) {
+      if(roundCount !== this.MAX_ROUNDS_IN_GAME) {
+        if (roundCount < this.minRoundCount) { this.minRoundCount = roundCount; }
+        if (roundCount > this.maxRoundCount) { this.maxRoundCount = roundCount; }
         for(let i = 1; i < this.roundData[0].length; ++i) {
           let e = this.roundData[roundDataIndex][i];
           let p = this.roundData[roundDataIndex][i - 1]
 
-          console.log(roundCount);
           if (roundCount < e.x) {
             ++p.y;
             break;

@@ -17,7 +17,7 @@ export default class IntegrationController {
 
     // A war...
     this.sampleWarResult = this._startWar(function(o) { return !o.war });
-    this.sampleDoubleWarResult = this._startWar(function(o) { return !o.draws.some(d => d.length === 3)})
+    this.sampleDoubleWarResult = this._startWar(function(o) { return !o.draws.some(d => d.length > 3)})
     this.sampleThreeWayWarResult = this._startWar(function(o) { return o.draws.filter(d => d.length > 1).length < 3; })
   }
 
