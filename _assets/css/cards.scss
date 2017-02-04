@@ -1,0 +1,377 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border: 1px solid #cecece;
+  border-radius: 10px;
+  height: 7em;
+  font-size: 1.5em;
+  width: 5em;
+  padding: 0.5em;
+  background-color: white;
+  $black: #555;
+  $red: rgb(255, 80, 35);
+  font-family: 'Montserrat';
+
+  div {
+      //reset
+      margin: 0;
+      padding: 0;
+  }
+
+  >div {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 1em;
+
+    &:first-child, &:last-child {
+      font-size: 100%;
+    }
+
+  }
+
+  @mixin generate-cards($suit-char, $suit-color) {
+    color: $suit-color;
+
+    &.ace {
+      color: $suit-color;
+      >div:first-child::after {
+        content: "A\A" + $suit-char;
+      }
+
+      >div:nth-child(3)::after {
+        content: $suit-char;
+        position: relative;
+        top: 3em;
+      }
+
+      >div:last-child::after {
+        position: relative;
+        top: 5em;
+        content: $suit-char + "\A A";
+      }
+    }
+
+    &.two {
+      >div:first-child::after {
+        content: "2\A" + $suit-char;
+      }
+
+      >div:nth-child(3)::before {
+        content: $suit-char + "\A\A\A\A\A" + $suit-char;
+        white-space: pre;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:last-child::after {
+        position: relative;
+        top: 5em;
+        content: $suit-char + "\A 2";
+      }
+    }
+
+    &.three {
+      >div:first-child::after {
+        content: "3\A" + $suit-char;
+      }
+
+      >div:nth-child(3)::before {
+        content: $suit-char + "\A\A" + $suit-char + "\A\A" + $suit-char;
+        line-height: 1.25em;
+        white-space: pre;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:last-child::after {
+        position: relative;
+        top: 5em;
+        content: $suit-char + "\A 3";
+      }
+    }
+
+    &.four {
+      >div:first-child::after {
+        content: "4\A" + $suit-char;
+      }
+
+      >div:nth-child(2)::before {
+        content: $suit-char + "\A\A\A\A\A" + $suit-char;
+        white-space: pre;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:nth-child(4)::before {
+        content: $suit-char + "\A\A\A\A\A" + $suit-char;
+        white-space: pre;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:last-child::after {
+        position: relative;
+        top: 5em;
+        content: $suit-char + "\A 4";
+      }
+    }
+
+    &.five {
+      >div:first-child::after {
+        content: "5\A" + $suit-char;
+      }
+
+      >div:nth-child(2)::before {
+        content: $suit-char + "\A\A\A\A\A" + $suit-char;
+        white-space: pre;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:nth-child(3)::after {
+        content: $suit-char;
+        position: relative;
+        top: 3em;
+      }
+
+      >div:nth-child(4)::before {
+        content: $suit-char + "\A\A\A\A\A" + $suit-char;
+        white-space: pre;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:last-child::after {
+        position: relative;
+        top: 5em;
+        content: $suit-char + "\A 5";
+      }
+    }
+
+    &.six {
+      >div:first-child::after {
+        content: "6\A" + $suit-char;
+      }
+
+      >div:nth-child(2)::before {
+        content: $suit-char + "\A\A" + $suit-char + "\A\A" + $suit-char;
+        white-space: pre;
+        line-height: 1.25em;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:nth-child(4)::before {
+        content: $suit-char + "\A\A" + $suit-char + "\A\A" + $suit-char;
+        line-height: 1.25em;
+        white-space: pre;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:last-child::after {
+        position: relative;
+        top: 5em;
+        content: $suit-char + "\A 6";
+      }
+    }
+
+    &.seven {
+      >div:first-child::after {
+        content: "7\A" + $suit-char;
+      }
+
+      >div:nth-child(2)::before {
+        content: $suit-char + "\A\A" + $suit-char + "\A\A" + $suit-char;
+        white-space: pre;
+        line-height: 1.25em;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:nth-child(3)::after {
+        content: $suit-char;
+        position: relative;
+        top: 4.5em;
+      }
+
+      >div:nth-child(4)::before {
+        content: $suit-char + "\A\A" + $suit-char + "\A\A" + $suit-char;
+        line-height: 1.25em;
+        white-space: pre;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:last-child::after {
+        position: relative;
+        top: 5em;
+        content: $suit-char + "\A 7";
+      }
+    }
+
+    &.eight {
+      >div:first-child::after {
+        content: "8\A" + $suit-char;
+      }
+
+      >div:nth-child(2)::before {
+        content: $suit-char + "\A\A" + $suit-char + "\A\A" + $suit-char;
+        white-space: pre;
+        line-height: 1.25em;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:nth-child(3)::before {
+        content: $suit-char + "\A\A" + $suit-char;
+        white-space: pre;
+        position: relative;
+        top: 1.75em;
+        line-height: 1.25em;
+      }
+
+      >div:nth-child(4)::before {
+        content: $suit-char + "\A\A" + $suit-char + "\A\A" + $suit-char;
+        line-height: 1.25em;
+        white-space: pre;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:last-child::after {
+        position: relative;
+        top: 5em;
+        content: $suit-char + "\A 8";
+      }
+    }
+
+    &.nine {
+      >div:first-child::after {
+        content: "9\A" + $suit-char;
+      }
+
+      >div:nth-child(2)::before {
+        content: $suit-char + "\A" + $suit-char + "\A" + $suit-char + "\A" + $suit-char;
+        white-space: pre;
+        line-height: 1.5em;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:nth-child(3)::after {
+        content: $suit-char;
+        position: relative;
+        top: 3em;
+      }
+
+      >div:nth-child(4)::before {
+        content: $suit-char + "\A" + $suit-char + "\A" + $suit-char + "\A" + $suit-char;
+        line-height: 1.5em;
+        white-space: pre;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:last-child::after {
+        position: relative;
+        top: 5em;
+        content: $suit-char + "\A 9";
+      }
+    }
+
+    &.ten {
+      >div:first-child::after {
+        content: "10\A" + $suit-char;
+      }
+
+      >div:nth-child(2)::before {
+        content: $suit-char + "\A" + $suit-char + "\A" + $suit-char + "\A" + $suit-char;
+        white-space: pre;
+        line-height: 1.5em;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:nth-child(3)::after {
+        content: $suit-char + "\A\A" + $suit-char;
+        white-space:pre;
+        line-height:1.5em;
+        position: relative;
+        top: 1.25em;
+      }
+
+      >div:nth-child(4)::before {
+        content: $suit-char + "\A" + $suit-char + "\A" + $suit-char + "\A" + $suit-char;
+        line-height: 1.5em;
+        white-space: pre;
+        position: relative;
+        top: 0.5em;
+      }
+
+      >div:last-child::after {
+        position: relative;
+        top: 5em;
+        content: $suit-char + "\A 10";
+      }
+    }
+
+    &.jack {
+      >div:first-child::after {
+        content: "J\A" + $suit-char;
+      }
+
+      >div:nth-child(2) {
+        // jack image
+        flex-grow: 1;
+      }
+
+      >div:last-child::after {
+        position: relative;
+        top: 5em;
+        content: $suit-char + "\A J";
+      }
+    }
+
+    &.queen {
+      >div:first-child::after {
+        content: "Q\A" + $suit-char;
+      }
+
+      >div:nth-child(2) {
+        // queen image
+        flex-grow: 1;
+      }
+
+      >div:last-child::after {
+        position: relative;
+        top: 5em;
+        content: $suit-char + "\A Q";
+      }
+    }
+
+    &.king {
+      >div:first-child::after {
+        content: "K\A" + $suit-char;
+      }
+
+      >div:nth-child(2) {
+        // king image
+        flex-grow: 1;
+      }
+
+      >div:last-child::after {
+        position: relative;
+        top: 5em;
+        content: $suit-char + "\A K";
+      }
+    }
+  }
+
+  &.diamonds { @include generate-cards("♦", $red); }
+  &.clubs { @include generate-cards("♣", $black); }
+  &.spades { @include generate-cards("♠", $black); }
+  &.hearts { @include generate-cards("♥", $red); }
+}
