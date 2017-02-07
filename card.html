@@ -4,13 +4,43 @@ layout: main
 
 {% css cards %}
 
+{% js js/lib/game-of-war.min.js %}
+{% js js/lib/nglib.js %}
+{% js js/card.min.js %}
+
 <style>
 .card-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+.card-container-stacked {
+  display: flex;
+  justify-content: center;
+}
+
+.card-container-stacked > div {
+  margin-left: -5.8em;
+}
+
+.card-container-stacked > div:first-child {
+  margin-left: 0;
+}
+
 </style>
+
+{% raw %}
+<div ng-app="CardStackApp" ng-controller="CardStackController as csvm">
+  <div class="card-container-stacked">
+    <card ng-repeat="card in csvm.cards.slice(0,26)" ng-style="{'z-index': $index * 10 }" suit="{{csvm.getSuitName(card.suit)}}" rank="{{csvm.getCardName(card.rank)}}"></card>
+  </div>
+  <div class="card-container-stacked">
+    <card ng-repeat="card in csvm.cards.slice(26)" ng-style="{'z-index': $index * 10 }" suit="{{csvm.getSuitName(card.suit)}}" rank="{{csvm.getCardName(card.rank)}}"></card>
+  </div>
+</div>
+{% endraw %}
+
 
 <div class="card-container">
   <div class="card ace clubs">

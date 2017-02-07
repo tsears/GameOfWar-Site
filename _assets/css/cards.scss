@@ -325,6 +325,12 @@
 
       >div:nth-child(2) {
         // jack image
+        &::after {
+          font-size: 3em;
+          position:relative;
+          top: 0.5em;
+          content: "J";
+        }
         flex-grow: 1;
       }
 
@@ -342,6 +348,12 @@
 
       >div:nth-child(2) {
         // queen image
+        &::after {
+          font-size: 3em;
+          position:relative;
+          top: 0.5em;
+          content: "Q";
+        }
         flex-grow: 1;
       }
 
@@ -359,6 +371,12 @@
 
       >div:nth-child(2) {
         // king image
+        &::after {
+          font-size: 3em;
+          position:relative;
+          top: 0.5em;
+          content: "K";
+        }
         flex-grow: 1;
       }
 
