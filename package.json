@@ -40,7 +40,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp build",
+    "build": "gulp build && jekyll build",
+    "docker-build": "docker build -t gow-site .",
+    "docker-start": "docker run --name gow-site --rm -p 8081:80 gow-site",
+    "docker-deploy": "npm run docker-build && docker tag gow-site tsears/gow-site:latest && docker push tsears/gow-site:latest",
+    "docker-attach": "docker exec -i -t gow-site /bin/bash",
     "watch": "gulp"
   },
   "repository": {

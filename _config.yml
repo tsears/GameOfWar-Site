@@ -26,6 +26,11 @@ exclude:
   - lib/
   - _js/
   - test/
+  - package-lock.json
+  - Dockerfile
+  - nginx.conf
+  - LICENSE
+  - README.md
   #- js/lib  # something is mangling my js libraries.. i'll do it manually
 
 # sass settings
