@@ -32,7 +32,7 @@ export default class ScriptTasks {
   		.pipe(self.plugins.uglify({
         preserveComments: 'license'
       }))
-  		.pipe(self.gulp.dest('_assets/js/js/lib'));
+  		.pipe(self.gulp.dest('assets/js/lib'));
     };
   }
 
@@ -40,7 +40,7 @@ export default class ScriptTasks {
     const self = this;
     return () => {
       return self.gulp.src(['lib/**/*.js'])
-        .pipe(self.gulp.dest('_assets/js/js/lib'));
+        .pipe(self.gulp.dest('assets/js/lib'));
     };
   }
 
@@ -67,7 +67,7 @@ export default class ScriptTasks {
     					})
     				]
     		}))
-        .pipe(self.gulp.dest('_assets/js/js'));
+        .pipe(self.gulp.dest('assets/js'));
     };
   }
 

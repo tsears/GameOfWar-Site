@@ -2,6 +2,56 @@
 layout: main
 ---
 
+<link rel="stylesheet" href="/assets/css/cards.css"/>
+
+<script src="/assets/js/lib/game-of-war.min.js"></script>
+<script src="/assets/js/lib/nglib.js"></script>
+<script src="/assets/js/demo.min.js"></script>
+
+<style>
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card-container-stacked {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 9em;
+}
+
+.card-container-stacked > div {
+  /*margin-left: -5.8em;*/
+}
+
+.card-container-stacked > div:first-child {
+  margin-left: 0;
+}
+
+.card {
+  font-size: 0.7em;
+  transition: left 0.5s linear;
+}
+
+.card.initial {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  margin: auto;
+}
+
+</style>
+
 {% capture readme %}{% include_relative README.md %}{% endcapture %}
 
 {{ readme | markdownify }}
+
+{% raw %}
+<div ng-app="DemoApp" ng-controller="DemoController as csvm">
+  <div class="card-container-stacked">
+    <card ng-repeat="card in csvm.cards" ng-style="{'z-index': $index * 10, left: $index * csvm.offset + 'em' }" ng-class="'initial'" suit="{{csvm.getSuitName(card.suit)}}" rank="{{csvm.getCardName(card.rank)}}"></card>
+  </div>
+</div>
+{% endraw %}

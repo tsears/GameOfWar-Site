@@ -38,3 +38,11 @@ gulp.task('default',
     'watch',
   ]
 );
+
+gulp.task('build', [
+	'lint',
+	'angularLib',
+	'scriptCompile',
+	'jsTest',
+	'jsLib',
+]);

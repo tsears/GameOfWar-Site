@@ -12,9 +12,6 @@ port: 4000
 # Build settings
 markdown: kramdown
 
-gems:
-  - jekyll-assets
-
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -33,7 +30,7 @@ exclude:
 
 # sass settings
 sass:
-  sass_dir: _sass
+  sass_dir: assets/css
   style: :compressed
 
 assets:
